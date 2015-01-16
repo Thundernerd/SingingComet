@@ -1,26 +1,11 @@
-var Greeter = (function () {
-    function Greeter(element) {
-        this.element = element;
-        this.element.innerHTML += "The time is: ";
-        this.span = document.createElement('span');
-        this.element.appendChild(this.span);
-        this.span.innerText = new Date().toUTCString();
-    }
-    Greeter.prototype.start = function () {
-        var _this = this;
-        this.timerToken = setInterval(function () { return _this.span.innerHTML = new Date().toUTCString(); }, 500);
-    };
-    Greeter.prototype.stop = function () {
-        clearTimeout(this.timerToken);
-    };
-    return Greeter;
-})();
 window.onload = function () {
-    var el = document.getElementById('content');
-    var greeter = new Greeter(el);
-    greeter.start();
-    var vec = new Vector2(5, 5);
-    vec.Normalize();
-    console.log(vec);
+    var cv = document.getElementById('c');
+    var ctx = cv.getContext("2d");
+    var WIDTH = window.innerWidth;
+    var HEIGHT = window.innerHeight;
+    cv.width = WIDTH;
+    cv.height = HEIGHT;
+    ctx.fillStyle = "#00FF00";
+    ctx.fillRect(10, 10, 10, 10);
 };
 //# sourceMappingURL=app.js.map

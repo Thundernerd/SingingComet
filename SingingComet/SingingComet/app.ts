@@ -1,33 +1,13 @@
-﻿class Greeter {
-    element: HTMLElement;
-    span: HTMLElement;
-    timerToken: number;
+﻿window.onload = () => {
+    var cv = <HTMLCanvasElement> document.getElementById('c');
+    var ctx: CanvasRenderingContext2D = cv.getContext("2d");
 
-    constructor(element: HTMLElement) {
-        this.element = element;
-        this.element.innerHTML += "The time is: ";
-        this.span = document.createElement('span');
-        this.element.appendChild(this.span);
-        this.span.innerText = new Date().toUTCString();
-    }
+    var WIDTH = window.innerWidth;
+    var HEIGHT = window.innerHeight;
 
-    start() {
-        this.timerToken = setInterval(() => this.span.innerHTML = new Date().toUTCString(), 500);
-    }
+    cv.width = WIDTH;
+    cv.height = HEIGHT;
 
-    stop() {
-        clearTimeout(this.timerToken);
-    }
-
-}
-
-window.onload = () => {
-    var el = document.getElementById('content');
-    var greeter = new Greeter(el);
-    greeter.start();
-
-    var vec = new Vector2(5, 5);
-    vec.Normalize();
-
-    console.log(vec);
+    ctx.fillStyle = "#00FF00";
+    ctx.fillRect(10, 10, 10, 10);    
 };
