@@ -20,7 +20,7 @@
         dt = (now.getTime() - last.getTime()) / 1000;
         totalSeconds = (now.getTime() - start.getTime()) / 1000;
         last = now;
-
+        
         //Tick all objects
     }
 
