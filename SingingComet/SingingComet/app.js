@@ -19,5 +19,8 @@ window.onload = function () {
     var el = document.getElementById('content');
     var greeter = new Greeter(el);
     greeter.start();
+    var vec = new Vector2(5, 5);
+    vec.Normalize();
+    console.log(vec);
 };
 //# sourceMappingURL=app.js.map

@@ -24,6 +24,8 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="app.ts" />
+    <TypeScriptCompile Include="lib\Entity.ts" />
+    <TypeScriptCompile Include="lib\Vector2.ts" />
   </ItemGroup>
   <ItemGroup>
     <None Include="web.Debug.config">
