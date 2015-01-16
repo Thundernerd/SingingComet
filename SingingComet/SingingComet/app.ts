@@ -8,6 +8,21 @@
     cv.width = WIDTH;
     cv.height = HEIGHT;
 
-    ctx.fillStyle = "#00FF00";
-    ctx.fillRect(10, 10, 10, 10);    
+    var start = new Date();
+    var last = new Date();
+
+    var dt: number;
+    var totalSeconds: number;
+
+    function tick() {
+        var now = new Date();
+        
+        dt = (now.getTime() - last.getTime()) / 1000;
+        totalSeconds = (now.getTime() - start.getTime()) / 1000;
+        last = now;
+
+        //Tick all objects
+    }
+
+    window.setInterval(tick, 1000 / 60);
 };
