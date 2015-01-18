@@ -29,6 +29,9 @@
     <TypeScriptCompile Include="lib\Random.ts" />
     <TypeScriptCompile Include="lib\Vector2.ts" />
     <TypeScriptCompile Include="Code\Planet.ts" />
+    <TypeScriptCompile Include="lib\Voice.ts" />
+    <TypeScriptCompile Include="TypeDefinitions\waa.d.ts" />
+    <TypeScriptCompile Include="webrtc\MediaStream.d.ts" />
   </ItemGroup>
   <ItemGroup>
     <None Include="web.Debug.config">

@@ -7,8 +7,9 @@
     Acceleration: Vector2;
     Velocity: Vector2;
     
+    Sound: Voice;    
 
-    constructor(x, y, radius, color) {
+    constructor(x, y, radius, color, audioCtx) {
         super(x, y);               
 
         this.Radius = radius;
@@ -18,6 +19,8 @@
 
         this.Acceleration = new Vector2();
         this.Velocity = new Vector2();
+
+        this.Sound = new Voice(audioCtx);
     }
 
     ApplyForce(force: Vector2) {       
@@ -28,9 +31,15 @@
         this.Acceleration.Add(f);
     }
 
+    map_range(value, low1, high1, low2, high2) {
+        return low2 + (high2 - low2) * (value - low1) / (high1 - low1);
+    }
+
     Attract(other: Planet) {        
         var force = this.Position.Subtracted(other.Position);
         var distance = force.Magnitude();
+        var nonClippedDistance = distance;
+
         if (distance < 5) distance = 5;
         if (distance > 25) distance = 25;       
 
@@ -39,6 +48,11 @@
         force.Scale(strength);
 
         other.ApplyForce(force);
+
+        
+        var freq = this.map_range(nonClippedDistance, 0, 900, 16, 7000);
+        console.log(freq);
+        this.Sound.Oscillator.frequency.value = freq;        
     }
 
     Update(dt: number) {
@@ -46,7 +60,8 @@
         
         this.Velocity.Add(this.Acceleration);
         this.Position.Add(this.Velocity);
-        this.Acceleration.Scale(0);                     
+        this.Acceleration.Scale(0);        
+                     
     }
 
     Draw(ctx: CanvasRenderingContext2D) {        

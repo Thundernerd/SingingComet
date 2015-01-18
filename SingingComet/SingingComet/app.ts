@@ -19,15 +19,16 @@
 
     var Entities: Array<Entity> = [];    
 
-    Init();
-
+    Init();    
     
+    var audioCtx = new AudioContext();
+
     var currentPlanet: Planet;
     function onMouseDown(event: MouseEvent) {
-        currentPlanet = new Planet(event.pageX, event.pageY, 10, RandomRGB());
+        currentPlanet = new Planet(event.pageX, event.pageY, 10, RandomRGB(), audioCtx);
         currentPlanet.Mass = 0;
 
-        Entities.push(currentPlanet);
+        Entities.push(currentPlanet);              
     }
 
     function onMouseUp(event: MouseEvent) {
