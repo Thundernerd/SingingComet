@@ -22,4 +22,3 @@ function RandomRGBA() {
 
     return 'rgba(' + r + ',' + g + ',' + b + ',' + a + ')';
 }
-

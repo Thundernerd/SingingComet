@@ -14,15 +14,28 @@
     var dt: number;
     var totalSeconds: number;
 
-    function tick() {
+    var Entities: Array<Entity> = [];    
+
+    Init();
+
+    function Init() {
+        Entities.push(new Planet(WIDTH / 2, HEIGHT / 2, 20, 'green'));
+    }
+
+    function Tick() {
         var now = new Date();
         
         dt = (now.getTime() - last.getTime()) / 1000;
         totalSeconds = (now.getTime() - start.getTime()) / 1000;
         last = now;
         
-        //Tick all objects
+        ctx.clearRect(0, 0, WIDTH, HEIGHT);
+
+        for (var i = 0; i < Entities.length; i++) {
+            Entities[i].Update(dt);
+            Entities[i].Draw(ctx);
+        }
     }
 
-    window.setInterval(tick, 1000 / 60);
+    window.setInterval(Tick, 1000 / 60);
 };

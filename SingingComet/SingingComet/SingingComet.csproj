@@ -25,9 +25,10 @@
   <ItemGroup>
     <TypeScriptCompile Include="app.ts" />
     <TypeScriptCompile Include="lib\Entity.ts" />
-    <TypeScriptCompile Include="lib\Helper.ts" />
+    <TypeScriptCompile Include="lib\CanvasHelper.ts" />
     <TypeScriptCompile Include="lib\Random.ts" />
     <TypeScriptCompile Include="lib\Vector2.ts" />
+    <TypeScriptCompile Include="Code\Planet.ts" />
   </ItemGroup>
   <ItemGroup>
     <None Include="web.Debug.config">
