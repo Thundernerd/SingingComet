@@ -32,3 +32,8 @@ function FillRectangle(ctx: CanvasRenderingContext2D, position: Vector2, width, 
     ctx.fillStyle = color;
     ctx.fillRect(position.X, position.Y, width, height); 
 }
+
+function DrawRectangle(ctx: CanvasRenderingContext2D, position: Vector2, width, height, color) {
+    ctx.strokeStyle = color;
+    ctx.strokeRect(position.X, position.Y, width, height);    
+}
