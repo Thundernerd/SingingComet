@@ -27,3 +27,8 @@ function FillCircle(ctx: CanvasRenderingContext2D, position: Vector2, radius = 1
     ctx.fill();
     ctx.closePath();
 }
+
+function FillRectangle(ctx: CanvasRenderingContext2D, position: Vector2, width, height, color) {
+    ctx.fillStyle = color;
+    ctx.fillRect(position.X, position.Y, width, height); 
+}
