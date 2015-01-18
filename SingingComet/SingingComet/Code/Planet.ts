@@ -20,26 +20,25 @@
         this.Velocity = new Vector2();
     }
 
-    ApplyForce(force: Vector2) {
-        var f = force.Scaled(1 / this.Mass);
+    ApplyForce(force: Vector2) {       
+        if (this.Mass == 0) return;
+         
+        var f = force.Divided(this.Mass);
+
         this.Acceleration.Add(f);
     }
 
-    Attract(other: Planet) {
-        //var force = other.Position.Subtracted(this.Position);
+    Attract(other: Planet) {        
         var force = this.Position.Subtracted(other.Position);
         var distance = force.Magnitude();
         if (distance < 5) distance = 5;
-        if (distance > 25) distance = 25;
-        
-
-        //Maybe constrain distance
+        if (distance > 25) distance = 25;       
 
         force.Normalize();
         var strength = (0.4 * this.Mass * other.Mass) / (distance * distance);
         force.Scale(strength);
 
-        other.Acceleration.Add(force);
+        other.ApplyForce(force);
     }
 
     Update(dt: number) {

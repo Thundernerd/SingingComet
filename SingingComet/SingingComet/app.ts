@@ -21,16 +21,22 @@
 
     Init();
 
+    
+    var currentPlanet: Planet;
     function onMouseDown(event: MouseEvent) {
-        Entities.push(new Planet(event.pageX, event.pageY, RandomInt(10, 30), RandomRGB()));        
+        currentPlanet = new Planet(event.pageX, event.pageY, 10, RandomRGB());
+        currentPlanet.Mass = 0;
+
+        Entities.push(currentPlanet);
     }
 
     function onMouseUp(event: MouseEvent) {
-
+        currentPlanet.Mass = currentPlanet.Radius;
+        currentPlanet = null;
     }
 
     function Init() {
-        Entities.push(new Planet(WIDTH / 2, HEIGHT / 2, 20, 'green'));
+        //Entities.push(new Planet(WIDTH / 2, HEIGHT / 2, 20, 'green'));
     }
 
     function Tick() {
@@ -42,9 +48,14 @@
         
         FillRectangle(ctx, new Vector2(), WIDTH, HEIGHT, 'rgba(0, 0, 0, 0.30)');
 
+        if (currentPlanet != null) {
+            console.log("grow");
+            currentPlanet.Radius += 50 * dt;
+        }
+
         for (var i = 0; i < Entities.length; i++) {
             for (var j = 0; j < Entities.length; j++) {
-                if (Entities[i] != Entities[j]) {
+                if (i != j) {
                     (<Planet>Entities[i]).Attract(<Planet>Entities[j]);
                 }                
             }

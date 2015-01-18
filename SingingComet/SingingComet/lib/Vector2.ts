@@ -69,4 +69,13 @@
     Scaled(value: number) {
         return new Vector2(this.X * value, this.Y * value);
     }
+
+    Divide(value: number) {
+        this.X /= value;
+        this.Y /= value;
+    }   
+
+    Divided(value: number) {
+        return new Vector2(this.X / value, this.Y / value);
+    }
 }
