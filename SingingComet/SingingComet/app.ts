@@ -17,7 +17,9 @@
     var dt: number;
     var totalSeconds: number;
 
-    var Entities: Array<Entity> = [];    
+    var Entities: Array<Entity> = []; 
+    var Planets: Array<Planet> = [];   
+    var Attractors: Array<AttractorPlanet> = [];   
 
     Init();    
     
@@ -28,16 +30,20 @@
         currentPlanet = new Planet(event.pageX, event.pageY, 10, RandomRGB(), audioCtx);
         currentPlanet.Mass = 0;
 
-        Entities.push(currentPlanet);              
+        Entities.push(currentPlanet);
+        Planets.push(currentPlanet);              
     }
 
     function onMouseUp(event: MouseEvent) {
         currentPlanet.Mass = currentPlanet.Radius;
+        currentPlanet.Velocity = new Vector2(-5, 0);
         currentPlanet = null;
     }
 
     function Init() {
-        //Entities.push(new Planet(WIDTH / 2, HEIGHT / 2, 20, 'green'));
+        var attractor = new AttractorPlanet(WIDTH / 2, HEIGHT / 2, 100, 'yellow');
+        Entities.push(attractor);
+        Attractors.push(attractor);    
     }
 
     function Tick() {
@@ -47,18 +53,15 @@
         totalSeconds = (now.getTime() - start.getTime()) / 1000;
         last = now;
         
-        FillRectangle(ctx, new Vector2(), WIDTH, HEIGHT, 'rgba(0, 0, 0, 0.30)');
+        FillRectangle(ctx, new Vector2(), WIDTH, HEIGHT, 'rgba(0, 0, 0, 0.20)');
 
         if (currentPlanet != null) {
-            console.log("grow");
-            currentPlanet.Radius += 50 * dt;
+            currentPlanet.Radius += 50 * dt;            
         }
-
-        for (var i = 0; i < Entities.length; i++) {
-            for (var j = 0; j < Entities.length; j++) {
-                if (i != j) {
-                    (<Planet>Entities[i]).Attract(<Planet>Entities[j]);
-                }                
+        
+        for (var i = 0; i < Attractors.length; i++) {
+            for (var j = 0; j < Planets.length; j++) {
+                Attractors[i].Attract(Planets[j]);
             }
         }
 

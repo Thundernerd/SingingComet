@@ -37,3 +37,7 @@ function DrawRectangle(ctx: CanvasRenderingContext2D, position: Vector2, width, 
     ctx.strokeStyle = color;
     ctx.strokeRect(position.X, position.Y, width, height);    
 }
+
+function map_range(value, low1, high1, low2, high2) {
+    return low2 + (high2 - low2) * (value - low1) / (high1 - low1);
+}

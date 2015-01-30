@@ -24,6 +24,7 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="app.ts" />
+    <TypeScriptCompile Include="Code\AttractorPlanet.ts" />
     <TypeScriptCompile Include="lib\Entity.ts" />
     <TypeScriptCompile Include="lib\CanvasHelper.ts" />
     <TypeScriptCompile Include="lib\Random.ts" />

@@ -31,10 +31,6 @@
         this.Acceleration.Add(f);
     }
 
-    map_range(value, low1, high1, low2, high2) {
-        return low2 + (high2 - low2) * (value - low1) / (high1 - low1);
-    }
-
     Attract(other: Planet) {        
         var force = this.Position.Subtracted(other.Position);
         var distance = force.Magnitude();
@@ -48,11 +44,7 @@
         force.Scale(strength);
 
         other.ApplyForce(force);
-
-        
-        var freq = this.map_range(nonClippedDistance, 0, 900, 16, 7000);
-        console.log(freq);
-        this.Sound.Oscillator.frequency.value = freq;        
+       
     }
 
     Update(dt: number) {
@@ -61,7 +53,9 @@
         this.Velocity.Add(this.Acceleration);
         this.Position.Add(this.Velocity);
         this.Acceleration.Scale(0);        
-                     
+               
+        var freq = this.Velocity.Magnitude();
+        this.Sound.Oscillator.frequency.value = freq * 100;                      
     }
 
     Draw(ctx: CanvasRenderingContext2D) {        

@@ -5,7 +5,7 @@ class Voice {
 
     constructor(context: AudioContext) {
         this.Oscillator = context.createOscillator();
-        //this.Oscillator.type = OscillatorType.sawtooth;
+        //this.Oscillator.type = 3;
         
         this.Oscillator.frequency.value = 200;
 
