@@ -22,8 +22,8 @@
         var distance = force.Magnitude();
         var nonClippedDistance = distance;
 
-        //if (distance < 5) distance = 5;
-        //if (distance > 25) distance = 25;       
+        if (distance < 5) distance = 5;
+        if (distance > 25) distance = 25;       
 
         force.Normalize();
         var strength = (0.4 * this.Mass * other.Mass) / (distance * distance);
